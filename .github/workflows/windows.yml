@@ -1,4 +1,4 @@
-copilotname: Build Windows
+name: Build Windows
 on: [workflow_dispatch, push]
 
 jobs:
