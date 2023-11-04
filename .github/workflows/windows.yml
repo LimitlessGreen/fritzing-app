@@ -33,7 +33,7 @@ jobs:
         wget https://boostorg.jfrog.io/artifactory/main/release/1.81.0/source/boost_1_81_0.7z
     
     - name: Get fritzing-parts
-      uses: actions/download-artifact@v4
+      uses: actions/checkout@v4
       with:
         repository: 'fritzing/fritzing-parts'
         path: 'fritzing-parts'
