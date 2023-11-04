@@ -5,7 +5,10 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-        
+    - name: Install Dependencies
+      run: |
+        choco install wget
+    
     - name: Install Qt
       uses: jurplel/install-qt-action@v3
       with:
