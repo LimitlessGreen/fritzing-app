@@ -1,4 +1,4 @@
-name: Build Windows
+copilotname: Build Windows
 on: [workflow_dispatch, push]
 
 jobs:
@@ -35,7 +35,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE
         wget https://boostorg.jfrog.io/artifactory/main/release/1.81.0/source/boost_1_81_0.7z
-        7z e boost*.7z
+        7z e -r -ao boost*.7z
         cd boost*
         mkdir build64
         cd build64
