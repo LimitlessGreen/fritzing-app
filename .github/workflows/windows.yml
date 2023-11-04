@@ -33,7 +33,14 @@ jobs:
                 
     - name: Get Boost
       run: |
+        cd $GITHUB_WORKSPACE
         wget https://boostorg.jfrog.io/artifactory/main/release/1.81.0/source/boost_1_81_0.7z
+        7z e boost*.7z
+        cd boost*
+        mkdir build64
+        cd build64
+        cmake .. -G "Visual Studio 16 2019" -A x64 -DBUILD_SHARED_LIBS=OFF -DBUILD_CLAR=OFF
+        cmake --build . --config Release
     
     - name: Get fritzing-parts
       uses: actions/checkout@v4
