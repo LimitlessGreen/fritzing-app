@@ -30,6 +30,11 @@ jobs:
         py7zrversion: '==0.20.*'
         extra: '--external 7z'
 
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.1
+      with:
+        vs-version: '16.5'
+
     - name: Get Boost
       uses: actions/checkout@v4
       with:
