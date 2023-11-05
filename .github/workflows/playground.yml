@@ -1,0 +1,29 @@
+name: Playground
+on: [workflow_dispatch, push]
+
+jobs:
+    build:
+      runs-on: windows-latest
+      steps:
+
+      - name: Get Boost
+        uses: actions/checkout@v4
+        with:
+          repository: 'boostorg/boost'
+          path: 'boost'
+          ref: 'boost-1.81.0'
+          submodules: 'recursive'
+
+      - name: Get MSVC
+        uses: ilammy/msvc-dev-cmd@v1
+        with: 
+            vsversion: '2019'
+            arch: 'x64'
+      
+      - name: Compile Boost
+        run: |
+            cd boost*
+            mkdir build64
+            cd build64
+            cmake .. -G "Visual Studio 16 2019" -A x64 -DBUILD_SHARED_LIBS=OFF -DBUILD_CLAR=OFF
+            cmake --build . --config Release
