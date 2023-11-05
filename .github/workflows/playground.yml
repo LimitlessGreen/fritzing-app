@@ -6,6 +6,16 @@ jobs:
       runs-on: windows-latest
       steps:
 
+      - name: Install Dependencies
+        run: |
+          choco install vswhere
+
+      - name: Get MSVC
+        uses: ilammy/msvc-dev-cmd@v1
+        with: 
+            vsversion: '2019'
+            arch: 'x64'
+
       - name: Get Boost
         uses: actions/checkout@v4
         with:
@@ -13,12 +23,6 @@ jobs:
           path: 'boost'
           ref: 'boost-1.81.0'
           submodules: 'recursive'
-
-      - name: Get MSVC
-        uses: ilammy/msvc-dev-cmd@v1
-        with: 
-            vsversion: '2019'
-            arch: 'x64'
       
       - name: Compile Boost
         run: |
